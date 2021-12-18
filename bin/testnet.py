@@ -13,7 +13,7 @@ import numpy as np
 import net
 # parameters to be set on the basis of the environment specifications
 ninputs = 4            # number of input neurons
-noutputs = 2           # number of output neurons
+noutputs = 4          # number of output neurons
 # set configuration parameters
 nnetworks = 1          # number of networks
 heterogeneous = 0      # whether multiple networks are heterogeneous or not
@@ -74,9 +74,9 @@ for step in range(10):
     nn.updateNet()
     # print the activation of neurons
     print("step %d ,  print input, inputs-hidden-outputs vectors" % (step))
-    print(inp)
+    # print(inp)
     print(out)
-    print(nact)
+    # print(nact)
     
 
 

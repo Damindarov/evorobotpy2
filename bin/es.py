@@ -103,8 +103,8 @@ def main(argv):
     global algoname
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--fileini', help='name of ini file', type=str, default="")
-    parser.add_argument('-s', '--seed', help='random generator seed', type=int, default=1)
+    parser.add_argument('-f', '--fileini', help='name of ini file', type=str, default="/opt/evorobotpy2/xpredprey/ErPredprey.ini")
+    parser.add_argument('-s', '--seed', help='random generator seed', type=int, default=6)
     parser.add_argument('-n', '--nreplications', help='number of replications', type=int, default=1)
     parser.add_argument('-w', '--workers', help='number of workers', type=int, default=1)
     parser.add_argument('-p', '--postevaluate', help='postevaluate an agent', action='store_true', default=False)

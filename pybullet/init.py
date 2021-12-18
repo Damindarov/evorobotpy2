@@ -1,4 +1,4 @@
-ADD THE FOLLOWING INSTRICTIONS TO ....../pybullet_envs/__init__.py
+#ADD THE FOLLOWING INSTRICTIONS TO ....../pybullet_envs/__init__.py
 
 
 register(id='AntBulletEnv-v5',  # reward optimized for evolutionary strategies

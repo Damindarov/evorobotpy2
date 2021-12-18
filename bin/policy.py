@@ -25,7 +25,7 @@ class Policy(object):
         self.seed = seed
         self.test = test
         self.fileini = fileini
-        self.nrobots = 1     # number of agents
+        self.nrobots = 5     # number of agents
         self.heterogeneous=0 # whether the policy of the agents is heterogeneous
         self.ntrials = 1     # evaluation trials
         self.nttrials = 1    # post-evaluation trials
@@ -356,6 +356,7 @@ class ErPolicy(Policy):
             t = 0
             while t < self.maxsteps:
                 self.nn.updateNet()              # update the activation of the policy
+                
                 rew += self.env.step()           # perform a simulation step
                 t += 1
                 if (self.test > 0):

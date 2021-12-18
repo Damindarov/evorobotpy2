@@ -134,14 +134,14 @@ class Circle(Base):
         style choices are : GLU_LINE, GLU_FILL, GLU_SILHOUETTE, GLU_POINT
     """
     def __init__(self, x=10, y=10, z=0, width=2, color=(0,0,0,1), stroke=0, rotation=0.0, style=GLU_SILHOUETTE):
-        self.radius = width*0.5
+        self.radius = width*5.5
         self.rect = Rect(x, y, width, width)
         self.style = style
         self.circleresolution = 60
         Base.__init__(self, x,y,z,color, stroke, rotation)
         
     def setWidth(self, w):
-        self.radius = w*0.5
+        self.radius = w*5.5
         self.rect.width = w
     width = property(Base.getWidth, setWidth)
         
@@ -181,14 +181,14 @@ class Disk(Base):
         style choices are : GLU_LINE, GLU_FILL, GLU_SILHOUETTE, GLU_POINT
     """
     def __init__(self, x=10, y=10, z=0, width=2, color=(0,0,0,1), stroke=0, rotation=0.0, style=GLU_FILL):
-        self.radius = width*0.5
+        self.radius = width*5.5
         self.rect = Rect(x, y, width, width)
         self.style = style
         self.circleresolution = 60
         Base.__init__(self, x,y,z,color, stroke, rotation)
         
     def setWidth(self, w):
-        self.radius = w*0.5
+        self.radius = w*5.5
         self.rect.width = w
     width = property(Base.getWidth, setWidth)
         
@@ -539,7 +539,8 @@ def update(wobj, info, ob, ac, nact):
 
     if (win == None):
         win = window.Window()
-        win.set_size(600+10, 400+10+100)
+        win.set_size(1500, 900)
+        # win.set_size(600+10, 400+10+100)
         glEnable(GL_BLEND)
     
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
@@ -587,6 +588,7 @@ def update(wobj, info, ob, ac, nact):
     c = 0
     nobjects = 0
     while (wobj[c] > 0.0):
+        
         # circular robot
         if (wobj[c] == 1.0):
             o = Circle(wobj[c+1],wobj[c+2],width=wobj[c+3]*2.0,color=(wobj[c+5],wobj[c+6],wobj[c+7],1.0)) 
@@ -606,6 +608,7 @@ def update(wobj, info, ob, ac, nact):
             o = Polygon([(wobj[c+1],wobj[c+2]), (wobj[c+3],wobj[c+2]), (wobj[c+3],wobj[c+4]), (wobj[c+1],wobj[c+4])], color=(wobj[c+5],wobj[c+6],wobj[c+7],1.0))
             o.render()
         c = c + 10
+        # c = c%50
         nobjects += 1
 
         
@@ -616,16 +619,16 @@ def update(wobj, info, ob, ac, nact):
     no = 0
     d = 20
     dx = np.clip(400 / (len(ob) + len(ac)), 1, 20)
-    for a in ob:
-        dd = a * float(d)
-        o = Polygon([(x, y), (x+dx, y), (x+dx, y+dd),(x,y+dd)],color=(1.0,0.0,0.0,1.0))
-        o.render()
-        x = x + dx
-    for a in ac:
-        dd = a * float(d)
-        o = Polygon([(x, y), (x+dx, y), (x+dx, y+dd),(x,y+dd)],color=(0.0,0.0,1.0,1.0))
-        o.render()
-        x = x + dx
+    # for a in ob:
+    #     dd = a * float(d)
+    #     o = Polygon([(x, y), (x+dx, y), (x+dx, y+dd),(x,y+dd)],color=(1.0,0.0,0.0,1.0))
+    #     o.render()
+    #     x = x + dx
+    # for a in ac:
+    #     dd = a * float(d)
+    #     o = Polygon([(x, y), (x+dx, y), (x+dx, y+dd),(x,y+dd)],color=(0.0,0.0,1.0,1.0))
+    #     o.render()
+    #     x = x + dx
         
     x = 0
     y = 425
@@ -633,21 +636,21 @@ def update(wobj, info, ob, ac, nact):
         y = 350
     d = 20
     dx = np.clip(400 / len(nact), 1, 20)
-    for a in nact:
-        dd = a * float(d)
-        o = Polygon([(x, y), (x+dx, y), (x+dx, y+dd),(x,y+dd)],color=(0.3,0.3,0.3,1.0))
-        o.render()
-        x = x + dx
+    # for a in nact:
+    #     dd = a * float(d)
+    #     o = Polygon([(x, y), (x+dx, y), (x+dx, y+dd),(x,y+dd)],color=(0.3,0.3,0.3,1.0))
+    #     o.render()
+    #     x = x + dx
         
     # rend text info
-    label = pyglet.text.Label(info,
-                          font_name='Arial',
-                          font_size=10,
-                          color=(0, 0, 0, 255),
-                          x=0, y=490)
+    # label = pyglet.text.Label(info,
+    #                       font_name='Arial',
+    #                       font_size=10,
+    #                       color=(0, 0, 0, 255),
+    #                       x=0, y=490)
 
-    # rend activation
-    label.draw()
+    # # rend activation
+    # label.draw()
     win.flip()
 
     """
